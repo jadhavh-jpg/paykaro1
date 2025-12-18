@@ -14,31 +14,114 @@ body{
   margin:0;
   background:#f4f6f9;
 }
+
+/* HEADER */
 header{
   background:#0b2d4d;
   color:#fff;
   padding:20px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 header h2{margin:0}
+header a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* LAYOUT */
 .container{
   padding:40px;
+  max-width:1000px;
+  margin:auto;
 }
+
+/* CARD */
 .card{
   background:#fff;
   padding:30px;
   border-radius:14px;
-  max-width:600px;
   box-shadow:0 10px 25px rgba(0,0,0,.1);
+  margin-bottom:30px;
 }
-.logout{
-  margin-top:20px;
+
+/* BUTTONS */
+.btn{
   display:inline-block;
-  padding:10px 18px;
+  padding:12px 20px;
   background:#0a7cff;
   color:#fff;
-  text-decoration:none;
+  border:none;
   border-radius:6px;
   font-weight:bold;
+  cursor:pointer;
+  text-decoration:none;
+}
+.btn.secondary{
+  background:#e53935;
+}
+
+/* FORM */
+label{
+  display:block;
+  margin-top:15px;
+  margin-bottom:6px;
+  font-weight:600;
+  font-size:14px;
+}
+input{
+  width:100%;
+  padding:12px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  font-size:15px;
+}
+
+.amount-box{
+  position:relative;
+}
+.amount-box span{
+  position:absolute;
+  left:12px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:18px;
+  font-weight:bold;
+  color:#0a7cff;
+}
+.amount-box input{
+  padding-left:36px;
+  font-size:20px;
+  font-weight:bold;
+}
+
+/* QR */
+.qr-box{
+  margin-top:25px;
+  padding:25px;
+  border:2px dashed #0a7cff;
+  border-radius:12px;
+  text-align:center;
+  display:none;
+}
+.qr{
+  width:160px;
+  height:160px;
+  margin:15px auto;
+  background:#eaf2ff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  color:#0a7cff;
+  border-radius:10px;
+}
+.note{
+  margin-top:10px;
+  font-size:13px;
+  color:#555;
 }
 </style>
 </head>
@@ -47,17 +130,61 @@ header h2{margin:0}
 
 <header>
   <h2>PayKaro Dashboard</h2>
+  <a href="index.html">Logout</a>
 </header>
 
 <div class="container">
+
+  <!-- WELCOME CARD -->
   <div class="card">
     <h3>Welcome to PayKaro 🎉</h3>
     <p>You have successfully logged in.</p>
-    <p>This is your dashboard page.</p>
-
-    <a href="index.html" class="logout">Logout</a>
+    <p>This is your dashboard.</p>
   </div>
+
+  <!-- COLLECT PAYMENT -->
+  <div class="card">
+    <h3>Collect Payment</h3>
+    <p>Enter amount and generate payment request</p>
+
+    <label>Amount</label>
+    <div class="amount-box">
+      <span>₹</span>
+      <input id="amount" type="number" placeholder="Enter amount">
+    </div>
+
+    <label>Customer Name (optional)</label>
+    <input id="customer" type="text" placeholder="Customer name">
+
+    <label>Mobile Number (optional)</label>
+    <input id="mobile" type="text" placeholder="Mobile number">
+
+    <br><br>
+    <button class="btn" onclick="generatePayment()">Generate Payment</button>
+
+    <div id="qrBox" class="qr-box">
+      <h4>Scan & Pay</h4>
+      <div class="qr">QR CODE</div>
+      <p>Customer can pay using any UPI app</p>
+    </div>
+
+    <div class="note">Demo mode • No real transaction</div>
+  </div>
+
 </div>
+
+<script>
+function generatePayment(){
+  const amount = document.getElementById("amount").value;
+
+  if(!amount || amount <= 0){
+    alert("Please enter valid amount");
+    return;
+  }
+
+  document.getElementById("qrBox").style.display = "block";
+}
+</script>
 
 </body>
 </html>
