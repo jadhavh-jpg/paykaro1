@@ -3,125 +3,204 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PayKaro Dashboard</title>
+<title>PayKaro – Smart Payments for Businesses</title>
 
 <style>
 *{
   box-sizing:border-box;
-  font-family:"Segoe UI", Arial, sans-serif;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
+
 body{
   margin:0;
-  background:#f4f6f9;
+  background:#0b1220;
+  color:#0f172a;
 }
 
 /* HEADER */
 header{
-  background:#0b2d4d;
-  color:#fff;
-  padding:20px 30px;
+  background:#ffffff;
+  padding:18px 40px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 2px 20px rgba(0,0,0,.06);
 }
-header h2{margin:0}
+
+.logo{
+  font-size:22px;
+  font-weight:800;
+  color:#2563eb;
+}
+
 header a{
-  color:#fff;
   text-decoration:none;
-  font-weight:bold;
-}
-
-/* LAYOUT */
-.container{
-  padding:40px;
-  max-width:1000px;
-  margin:auto;
-}
-
-/* CARD */
-.card{
-  background:#fff;
-  padding:30px;
-  border-radius:14px;
-  box-shadow:0 10px 25px rgba(0,0,0,.1);
-  margin-bottom:30px;
-}
-
-/* BUTTONS */
-.btn{
-  display:inline-block;
-  padding:12px 20px;
-  background:#0a7cff;
-  color:#fff;
-  border:none;
-  border-radius:6px;
-  font-weight:bold;
-  cursor:pointer;
-  text-decoration:none;
-}
-.btn.secondary{
-  background:#e53935;
-}
-
-/* FORM */
-label{
-  display:block;
-  margin-top:15px;
-  margin-bottom:6px;
+  color:#0f172a;
   font-weight:600;
-  font-size:14px;
+  margin-left:25px;
 }
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,#0b1220,#0f1e3a);
+  color:#fff;
+  padding:90px 40px;
+}
+
+.hero-inner{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.hero h1{
+  font-size:48px;
+  line-height:1.2;
+  margin-bottom:20px;
+}
+
+.hero p{
+  font-size:18px;
+  opacity:.9;
+  line-height:1.6;
+}
+
+.hero-btns{
+  margin-top:30px;
+}
+
+.btn-primary{
+  background:#2563eb;
+  color:#fff;
+  padding:14px 26px;
+  border-radius:10px;
+  font-weight:700;
+  border:none;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.btn-secondary{
+  background:transparent;
+  border:1px solid #334155;
+  color:#e5e7eb;
+  padding:14px 26px;
+  border-radius:10px;
+  margin-left:15px;
+  font-weight:600;
+}
+
+/* AUTH CARD */
+.auth-card{
+  background:#ffffff;
+  border-radius:18px;
+  padding:35px;
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+  color:#0f172a;
+}
+
+.tabs{
+  display:flex;
+  background:#f1f5f9;
+  border-radius:12px;
+  overflow:hidden;
+  margin-bottom:25px;
+}
+
+.tabs button{
+  flex:1;
+  padding:14px;
+  border:none;
+  background:transparent;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.tabs button.active{
+  background:#2563eb;
+  color:#fff;
+}
+
+form{display:none}
+form.active{display:block}
+
+label{
+  font-size:14px;
+  font-weight:600;
+  margin-bottom:6px;
+  display:block;
+}
+
 input{
   width:100%;
-  padding:12px;
-  border-radius:6px;
-  border:1px solid #ccc;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #cbd5f5;
+  margin-bottom:18px;
   font-size:15px;
 }
 
-.amount-box{
-  position:relative;
-}
-.amount-box span{
-  position:absolute;
-  left:12px;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:18px;
-  font-weight:bold;
-  color:#0a7cff;
-}
-.amount-box input{
-  padding-left:36px;
-  font-size:20px;
-  font-weight:bold;
+.submit{
+  width:100%;
+  padding:16px;
+  background:#2563eb;
+  color:#fff;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
 }
 
-/* QR */
-.qr-box{
-  margin-top:25px;
-  padding:25px;
-  border:2px dashed #0a7cff;
-  border-radius:12px;
+.small{
   text-align:center;
-  display:none;
-}
-.qr{
-  width:160px;
-  height:160px;
-  margin:15px auto;
-  background:#eaf2ff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
-  color:#0a7cff;
-  border-radius:10px;
-}
-.note{
-  margin-top:10px;
   font-size:13px;
-  color:#555;
+  color:#475569;
+  margin-top:12px;
+}
+
+/* TRUST */
+.trust{
+  background:#ffffff;
+  padding:70px 40px;
+}
+
+.trust-inner{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:30px;
+}
+
+.trust-box{
+  padding:30px;
+  border-radius:18px;
+  background:#f8fafc;
+}
+
+.trust-box h3{
+  margin-bottom:10px;
+}
+
+/* FOOTER */
+footer{
+  background:#020617;
+  color:#94a3b8;
+  padding:40px;
+  text-align:center;
+  font-size:14px;
+}
+
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero h1{font-size:38px}
 }
 </style>
 </head>
@@ -129,60 +208,110 @@ input{
 <body>
 
 <header>
-  <h2>PayKaro Dashboard</h2>
-  <a href="index.html">Logout</a>
+  <div class="logo">PayKaro</div>
+  <nav>
+    <a href="#">Features</a>
+    <a href="#">Security</a>
+    <a href="#">Support</a>
+  </nav>
 </header>
 
-<div class="container">
+<section class="hero">
+  <div class="hero-inner">
 
-  <!-- WELCOME CARD -->
-  <div class="card">
-    <h3>Welcome to PayKaro 🎉</h3>
-    <p>You have successfully logged in.</p>
-    <p>This is your dashboard.</p>
-  </div>
+    <!-- LEFT -->
+    <div>
+      <h1>Accept Payments.<br>Build Trust.<br>Grow Faster.</h1>
+      <p>
+        PayKaro is a modern payment platform built for Indian businesses.
+        Fast UPI collections, clear records and enterprise-grade security.
+      </p>
 
-  <!-- COLLECT PAYMENT -->
-  <div class="card">
-    <h3>Collect Payment</h3>
-    <p>Enter amount and generate payment request</p>
-
-    <label>Amount</label>
-    <div class="amount-box">
-      <span>₹</span>
-      <input id="amount" type="number" placeholder="Enter amount">
+      <div class="hero-btns">
+        <button class="btn-primary">Get Started</button>
+        <button class="btn-secondary">View Demo</button>
+      </div>
     </div>
 
-    <label>Customer Name (optional)</label>
-    <input id="customer" type="text" placeholder="Customer name">
+    <!-- RIGHT -->
+    <div class="auth-card">
 
-    <label>Mobile Number (optional)</label>
-    <input id="mobile" type="text" placeholder="Mobile number">
+      <div class="tabs">
+        <button id="loginTab" class="active" onclick="showLogin()">Login</button>
+        <button id="signupTab" onclick="showSignup()">Sign Up</button>
+      </div>
 
-    <br><br>
-    <button class="btn" onclick="generatePayment()">Generate Payment</button>
+      <!-- LOGIN -->
+      <form id="loginForm" class="active" onsubmit="return false;">
+        <label>Mobile Number</label>
+        <input id="mobile" placeholder="Enter mobile number">
 
-    <div id="qrBox" class="qr-box">
-      <h4>Scan & Pay</h4>
-      <div class="qr">QR CODE</div>
-      <p>Customer can pay using any UPI app</p>
+        <label>Password</label>
+        <input id="password" type="password" placeholder="Enter password">
+
+        <button class="submit" onclick="login()">Login to Dashboard</button>
+        <div class="small">Demo • Secure environment</div>
+      </form>
+
+      <!-- SIGNUP -->
+      <form id="signupForm" onsubmit="return false;">
+        <label>Full Name</label>
+        <input placeholder="Your name">
+
+        <label>Mobile Number</label>
+        <input placeholder="Mobile number">
+
+        <label>Business Name</label>
+        <input placeholder="Business name">
+
+        <button class="submit">Create Free Account</button>
+        <div class="small">No credit card required</div>
+      </form>
+
     </div>
 
-    <div class="note">Demo mode • No real transaction</div>
   </div>
+</section>
 
-</div>
+<section class="trust">
+  <div class="trust-inner">
+    <div class="trust-box">
+      <h3>Bank-Grade Security</h3>
+      <p>Payments protected with industry standard encryption.</p>
+    </div>
+    <div class="trust-box">
+      <h3>UPI First</h3>
+      <p>Designed for fast Indian UPI workflows.</p>
+    </div>
+    <div class="trust-box">
+      <h3>Business Friendly</h3>
+      <p>Simple UI built for merchants, not engineers.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 PayKaro • Built for Indian Businesses
+</footer>
 
 <script>
-function generatePayment(){
-  const amount = document.getElementById("amount").value;
+function showLogin(){
+  loginTab.classList.add("active");
+  signupTab.classList.remove("active");
+  loginForm.classList.add("active");
+  signupForm.classList.remove("active");
+}
 
-  if(!amount || amount <= 0){
-    alert("Please enter valid amount");
-    return;
-  }
+function showSignup(){
+  signupTab.classList.add("active");
+  loginTab.classList.remove("active");
+  signupForm.classList.add("active");
+  loginForm.classList.remove("active");
+}
 
-  document.getElementById("qrBox").style.display = "block";
+function login(){
+  alert("Demo login successful");
+  window.location.href="dashboard.html";
 }
 </script>
 
