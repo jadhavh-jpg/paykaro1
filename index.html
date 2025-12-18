@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PayKaro | Login & Sign Up</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(120deg, #0b2d4d, #0a7cff);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CONTAINER */
+.auth-container {
+    background: #fff;
+    width: 900px;
+    max-width: 95%;
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+/* LEFT INFO */
+.auth-info {
+    background: #0b2d4d;
+    color: #fff;
+    padding: 50px;
+}
+
+.auth-info h1 {
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+.auth-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+/* FORM SIDE */
+.auth-form {
+    padding: 50px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.tabs button {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    background: #f1f1f1;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.tabs button.active {
+    background: #0a7cff;
+    color: #fff;
+}
+
+form {
+    display: none;
+}
+
+form.active {
+    display: block;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+button.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: #0a7cff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.note {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #555;
+    text-align: center;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .auth-container {
+        grid-template-columns: 1fr;
+    }
+    .auth-info {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <!-- LEFT INFO -->
+    <div class="auth-info">
+        <h1>Welcome to PayKaro</h1>
+        <p>
+            Secure digital payment platform designed for Indian businesses.  
+            Login to manage your payments or create a new account to start accepting payments with confidence.
+        </p>
+    </div>
+
+    <!-- FORM SECTION -->
+    <div class="auth-form">
+
+        <div class="tabs">
+            <button class="active" onclick="showLogin()">Login</button>
+            <button onclick="showSignup()">New User</button>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="loginForm" class="active">
+            <label>Mobile Number</label>
+            <input type="text" placeholder="Enter registered mobile number">
+
+            <label>Password</label>
+            <input type="password" placeholder="Enter password">
+
+            <button class="submit-btn">Login Securely</button>
+
+            <div class="note">
+                Forgot password? Contact PayKaro Support
+            </div>
+        </form>
+
+        <!-- SIGNUP FORM -->
+        <form id="signupForm">
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your full name">
+
+            <label>Mobile Number</label>
+            <input type="text" placeholder="Enter mobile number">
+
+            <label>Business Name</label>
+            <input type="text" placeholder="Enter business name">
+
+            <label>Create Password</label>
+            <input type="password" placeholder="Create a password">
+
+            <button class="submit-btn">Create Account</button>
+
+            <div class="note">
+                By signing up, you agree to PayKaro terms & privacy policy
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script>
+function showLogin() {
+    document.getElementById("loginForm").classList.add("active");
+    document.getElementById("signupForm").classList.remove("active");
+    document.querySelectorAll(".tabs button")[0].classList.add("active");
+    document.querySelectorAll(".tabs button")[1].classList.remove("active");
+}
+
+function showSignup() {
+    document.getElementById("signupForm").classList.add("active");
+    document.getElementById("loginForm").classList.remove("active");
+    document.querySelectorAll(".tabs button")[1].classList.add("active");
+    document.querySelectorAll(".tabs button")[0].classList.remove("active");
+}
+</script>
+
+</body>
+</html>
