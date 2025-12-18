@@ -159,7 +159,8 @@ button.submit-btn {
             <label>Password</label>
             <input type="password" placeholder="Enter password">
 
-            <button class="submit-btn">Login Securely</button>
+            <button class="submit-btn" onclick="loginUser()">Login Securely</button>
+
 
             <div class="note">
                 Forgot password? Contact PayKaro Support
@@ -189,6 +190,25 @@ button.submit-btn {
 
     </div>
 </div>
+<script>
+function loginUser() {
+    const mobile = document.querySelector('#loginForm input[type="text"]').value;
+    const password = document.querySelector('#loginForm input[type="password"]').value;
+
+    if(mobile === "" || password === ""){
+        alert("Please enter mobile number and password");
+        return;
+    }
+
+    // DEMO LOGIN (temporary)
+    if(mobile === "9300594567" && password === "123456"){
+        alert("Login Successful");
+        window.location.href = "dashboard.html";
+    } else {
+        alert("Invalid credentials (Demo mode)");
+    }
+}
+</script>
 
 <script>
 function showLogin() {
@@ -208,3 +228,4 @@ function showSignup() {
 
 </body>
 </html>
+
